@@ -1,21 +1,21 @@
 /*
- * Hover class adds and remove a given classname to an element
+ * Hover class adds and removes a given classname to an element on a hover event
  * Usage: $(selector).hoverClass('class-name');
- * Options:
- *   css_class = CSS class to be added, (default: 'hover')
+ * @params css_class: CSS class to be added, (default: 'hover')
  */
 
 (function($){
-  $.fn.hoverClass = function(options){
-    var defaults = {
-        'css_class': 'hover'
-    }
-    var settings = $.extend(defaults, options)
+  $.fn.hoverClass = function(css_class){
     
-    $(this).hover(function(){
-        $(this).addClass(settings.css_class);
-    }, function(){
-        $(this).removeClass(settings.css_class);
+    // Defaults
+    css_class = typeof(css_class) != 'undefined' ? css_class : 'hover';
+    
+    // Events
+    this.hover(
+      function(){
+        $(this).addClass(css_class);
+      }, function(){
+        $(this).removeClass(css_class);
     });
     
   };
